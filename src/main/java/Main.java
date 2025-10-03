@@ -6,6 +6,8 @@ import model.Instructor;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
+import model.enums.Rank;
+
 import java.time.LocalDate;
 import java.util.List;
 
@@ -23,8 +25,8 @@ public class Main {
         InstructorDAO instructorDAO = new InstructorDAO(em);
 
         // Add sample students
-        Student student1 = new Student("John Doe", "john@example.com", "White Belt", LocalDate.now());
-        Student student2 = new Student("Jane Smith", "jane@example.com", "Yellow Belt", LocalDate.now());
+        Student student1 = new Student("John Doe", "john@example.com", Rank.DAN_2, LocalDate.now());
+        Student student2 = new Student("Jane Smith", "jane@example.com", Rank.DAN_3, LocalDate.now());
 
         // Save students using the DAO (no need to call em.persist directly)
         studentDAO.save(student1);

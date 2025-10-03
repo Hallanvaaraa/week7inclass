@@ -1,6 +1,8 @@
 package model;
 
 import jakarta.persistence.*;
+import model.enums.Rank;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -15,7 +17,6 @@ public class Student {
 
     private String name;
     private String email;
-    private String rank;
     private LocalDate joinDate;
 
     @Column(name = "created_at", updatable = false)
@@ -34,9 +35,12 @@ public class Student {
     private List<ProgressReport> progressReports;
 
 
+    private Rank rank;
+
+
     public Student() {}
 
-    public Student(String name, String email, String rank, LocalDate joinDate) {
+    public Student(String name, String email, Rank rank, LocalDate joinDate) {
         this.name = name;
         this.email = email;
         this.rank = rank;
@@ -63,7 +67,7 @@ public class Student {
     public Long getId() { return id; }
     public String getName() { return name; }
     public String getEmail() { return email; }
-    public String getRank() { return rank; }
+    public Rank getRank() { return rank; }
     public LocalDate getJoinDate() { return joinDate; }
     public LocalDateTime getCreatedAt() { return createdAt; }
     public LocalDateTime getUpdatedAt() { return updatedAt; }
@@ -73,7 +77,7 @@ public class Student {
 
     public void setName(String name) { this.name = name; }
     public void setEmail(String email) { this.email = email; }
-    public void setRank(String rank) { this.rank = rank; }
+    public void setRank(Rank rank) { this.rank = rank; }
     public void setJoinDate(LocalDate joinDate) { this.joinDate = joinDate; }
     public void setTrainingSessions(List<Attendance> attendances) { this.attendances = attendances; }
     public void setProgressReports(List<ProgressReport> progressReports) { this.progressReports = progressReports; }

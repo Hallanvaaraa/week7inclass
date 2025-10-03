@@ -1,6 +1,8 @@
 package model;
 
 import jakarta.persistence.*;
+
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -9,6 +11,15 @@ public class Instructor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "created_at", updatable = false)
+    private LocalDateTime createdAt;
+
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt;
+
+    @Transient
+    private boolean loaded;
 
     private String name;
     private String specialization;
@@ -23,6 +34,22 @@ public class Instructor {
         this.name = name;
         this.specialization = specialization;
         this.experienceYears = experienceYears;
+    }
+
+    @PrePersist
+    protected void onCreate() {
+        createdAt = LocalDateTime.now();
+        updatedAt = createdAt;
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        updatedAt = LocalDateTime.now();
+    }
+
+    @PostLoad
+    protected void afterLoad() {
+        loaded = true;
     }
 
     public boolean getName() {
