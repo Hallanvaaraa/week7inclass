@@ -20,8 +20,8 @@ public class TrainingSession {
     @JoinColumn(name = "instructor_id", nullable = false)
     private Instructor instructor;
 
-    @ManyToMany(mappedBy = "trainingSessions")  // This refers to the "trainingSessions" property in Student
-    private List<Student> students;
+    @OneToMany(mappedBy = "trainingSession")
+    private List<Attendance> attendances;
 
     // Constructors, Getters & Setters
 }

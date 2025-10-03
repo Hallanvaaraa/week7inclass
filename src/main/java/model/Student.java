@@ -27,13 +27,12 @@ public class Student {
     @Transient
     private int membershipDuration;
 
-    @ManyToMany
-    @JoinTable(
-            name = "training_session_students", // This is the join table
-            joinColumns = @JoinColumn(name = "student_id"),
-            inverseJoinColumns = @JoinColumn(name = "training_session_id")
-    )
-    private List<TrainingSession> trainingSessions;
+    @OneToMany(mappedBy = "student")
+    private List<Attendance> attendances;
+
+    @OneToMany(mappedBy = "student")
+    private List<ProgressReport> progressReports;
+
 
     public Student() {}
 
@@ -69,11 +68,13 @@ public class Student {
     public LocalDateTime getCreatedAt() { return createdAt; }
     public LocalDateTime getUpdatedAt() { return updatedAt; }
     public int getMembershipDuration() { return membershipDuration; }
-    public List<TrainingSession> getTrainingSessions() { return trainingSessions; }
+    public List<Attendance> getAttendances() { return attendances; }
+    public List<ProgressReport> getProgressReports() { return progressReports; }
 
     public void setName(String name) { this.name = name; }
     public void setEmail(String email) { this.email = email; }
     public void setRank(String rank) { this.rank = rank; }
     public void setJoinDate(LocalDate joinDate) { this.joinDate = joinDate; }
-    public void setTrainingSessions(List<TrainingSession> trainingSessions) { this.trainingSessions = trainingSessions; }
+    public void setTrainingSessions(List<Attendance> attendances) { this.attendances = attendances; }
+    public void setProgressReports(List<ProgressReport> progressReports) { this.progressReports = progressReports; }
 }
