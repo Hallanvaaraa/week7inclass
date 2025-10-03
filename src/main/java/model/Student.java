@@ -17,7 +17,7 @@ public class Student {
 
     private String name;
     private String email;
-    private LocalDate joinDate;
+    private LocalDateTime joinDate;
 
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
@@ -34,13 +34,14 @@ public class Student {
     @OneToMany(mappedBy = "student")
     private List<ProgressReport> progressReports;
 
-
+    @Convert(converter = RankConverter.class)
+    @Column(nullable = false)
     private Rank rank;
 
 
     public Student() {}
 
-    public Student(String name, String email, Rank rank, LocalDate joinDate) {
+    public Student(String name, String email, Rank rank, LocalDateTime joinDate) {
         this.name = name;
         this.email = email;
         this.rank = rank;
@@ -68,7 +69,7 @@ public class Student {
     public String getName() { return name; }
     public String getEmail() { return email; }
     public Rank getRank() { return rank; }
-    public LocalDate getJoinDate() { return joinDate; }
+    public LocalDateTime getJoinDate() { return joinDate; }
     public LocalDateTime getCreatedAt() { return createdAt; }
     public LocalDateTime getUpdatedAt() { return updatedAt; }
     public int getMembershipDuration() { return membershipDuration; }
@@ -78,7 +79,7 @@ public class Student {
     public void setName(String name) { this.name = name; }
     public void setEmail(String email) { this.email = email; }
     public void setRank(Rank rank) { this.rank = rank; }
-    public void setJoinDate(LocalDate joinDate) { this.joinDate = joinDate; }
+    public void setJoinDate(LocalDateTime joinDate) { this.joinDate = joinDate; }
     public void setTrainingSessions(List<Attendance> attendances) { this.attendances = attendances; }
     public void setProgressReports(List<ProgressReport> progressReports) { this.progressReports = progressReports; }
 }

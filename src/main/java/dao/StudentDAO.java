@@ -4,6 +4,8 @@ import model.Student;
 import jakarta.persistence.EntityManager;
 import model.TrainingSession;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class StudentDAO extends GenericDAO<Student> {
@@ -31,10 +33,11 @@ public class StudentDAO extends GenericDAO<Student> {
 
     // List all students with progress reports in the last three months
     public List<Student> getActiveStudents() {
+        LocalDateTime cutoff = LocalDateTime.now().minusMonths(3);
         return entityManager.createQuery(
-                "SELECT DISTINCT pr.student FROM ProgressReport pr WHERE pr.reportDate >= :threeMonthsAgo",
+                "SELECT DISTINCT pr.student FROM ProgressReport pr WHERE pr.reportDate >= :cutoff",
                 Student.class)
-                .setParameter("threeMonthsAgo", java.time.LocalDate.now().minusMonths(3))
+                .setParameter("cutoff", cutoff)
                 .getResultList();
     }
 

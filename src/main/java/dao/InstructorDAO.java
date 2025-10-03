@@ -23,7 +23,7 @@ public class InstructorDAO extends GenericDAO<Instructor> {
         var cb = entityManager.getCriteriaBuilder();
         var cq = cb.createQuery(Instructor.class);
         var root = cq.from(Instructor.class);
-        cq.select(root).where(cb.greaterThan(root.get("yearsOfExperience"), 5));
+        cq.select(root).where(cb.greaterThan(root.get("experienceYears"), 5));
         return entityManager.createQuery(cq).getResultList();
     }
 }

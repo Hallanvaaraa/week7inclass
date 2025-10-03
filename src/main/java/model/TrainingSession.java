@@ -33,8 +33,14 @@ public class TrainingSession {
     @OneToMany(mappedBy = "trainingSession")
     private List<Attendance> attendances;
 
-    // Constructors, Getters & Setters
     public TrainingSession() {}
+
+    public TrainingSession(LocalDate date, String location, int duration, Instructor instructor) {
+        this.date = date;
+        this.location = location;
+        this.duration = duration;
+        this.instructor = instructor;
+    }
 
     @PrePersist
     protected void onCreate() {
@@ -50,5 +56,58 @@ public class TrainingSession {
     @PostLoad
     protected void afterLoad() {
         loaded = true;
+    }
+
+    // Getters and Setters
+    public Long getId() {
+        return id;
+    }
+    public void setId(Long id) {
+        this.id = id;
+    }
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+    public boolean isLoaded() {
+        return loaded;
+    }
+    public LocalDate getDate() {
+        return date;
+    }
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+    public String getLocation() {
+        return location;
+    }
+    public void setLocation(String location) {
+        this.location = location;
+    }
+    public int getDuration() {
+        return duration;
+    }
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
+    public Instructor getInstructor() {
+        return instructor;
+    }
+    public void setInstructor(Instructor instructor) {
+        this.instructor = instructor;
+    }
+    public List<Attendance> getAttendances() {
+        return attendances;
+    }
+    public void setAttendances(List<Attendance> attendances) {
+        this.attendances = attendances;
     }
 }

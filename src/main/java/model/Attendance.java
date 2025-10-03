@@ -29,7 +29,10 @@ public class Attendance {
     @Transient
     private boolean loaded;
 
+    @Convert(converter = AttendanceStatusConverter.class)
+    @Column(nullable = false)
     private AttendanceStatus status;
+
     private String notes;
 
     public Attendance() {}
@@ -57,4 +60,44 @@ public class Attendance {
     }
 
     // Getters and Setters
+
+    public Long getId() {
+        return id;
+    }
+    public void setId(Long id) {
+        this.id = id;
+    }
+    public Student getStudent() {
+        return student;
+    }
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+    public TrainingSession getTrainingSession() {
+        return trainingSession;
+    }
+    public void setTrainingSession(TrainingSession trainingSession) {
+        this.trainingSession = trainingSession;
+    }
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+    public boolean isLoaded() {
+        return loaded;
+    }
+    public AttendanceStatus getStatus() {
+        return status;
+    }
+    public void setStatus(AttendanceStatus status) {
+        this.status = status;
+    }
+    public String getNotes() {
+        return notes;
+    }
+    public void setNotes(String notes) {
+        this.notes = notes;
+    }
 }

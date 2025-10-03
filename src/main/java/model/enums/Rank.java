@@ -6,7 +6,7 @@ public enum Rank {
     DAN_1(101), DAN_2(102), DAN_3(103), DAN_4(104), DAN_5(105),
     DAN_6(106), DAN_7(107), DAN_8(108), DAN_9(109), DAN_10(110);
 
-    private final int level;
+    public final int level;
     Rank(int level) {
         this.level = level;
     }

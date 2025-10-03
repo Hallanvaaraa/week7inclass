@@ -58,4 +58,46 @@ public class ProgressReport {
 
     // Getters and Setters
 
+    public Long getId() {
+        return id;
+    }
+    public void setId(Long id) {
+        this.id = id;
+    }
+    public Student getStudent() {
+        return student;
+    }
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+    public boolean isLoaded() {
+        return loaded;
+    }
+    public Long getVersion() {
+        return version;
+    }
+    public LocalDateTime getReportDate() {
+        return reportDate;
+    }
+    public void setReportDate(LocalDateTime reportDate) {
+        this.reportDate = reportDate;
+    }
+    public String getAchievements() {
+        return achievements;
+    }
+    public void setAchievements(String achievements) {
+        this.achievements = achievements;
+    }
+    public String getAreasForImprovement() {
+        return areasForImprovement;
+    }
+    public void setAreasForImprovement(String areasForImprovement) {
+        this.areasForImprovement = areasForImprovement;
+    }
 }

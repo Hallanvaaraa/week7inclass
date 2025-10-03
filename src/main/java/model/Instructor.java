@@ -51,14 +51,29 @@ public class Instructor {
     protected void afterLoad() {
         loaded = true;
     }
-
-    public boolean getName() {
-        return name != null;
+    // Getters and Setters
+    public Long getId() {
+        return id;
     }
-
-    public Object getSpecialization() {
+    public String getName() {
+        return name;
+    }
+    public String getSpecialization() {
         return specialization;
     }
-
-    // Getters and Setters
+    public int getExperienceYears() {
+        return experienceYears;
+    }
+    public List<TrainingSession> getTrainingSessions() {
+        return trainingSessions;
+    }
+    public boolean isLoaded() {
+        return loaded;
+    }
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
 }
